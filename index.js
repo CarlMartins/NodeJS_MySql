@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const handlebars = require('express-handlebars');
+const cadastroController = require('./controllers/cadastroController');
 
 // Config
 //// Template engine
@@ -14,6 +15,12 @@ const sequelize = new Sequelize('postagensdb', 'root', '1234', {
     dialect: 'mysql'
 });
 
+//// Inicialização do servidor
+app.listen(3000, () =>
+{
+    console.log("Servidor rodando na URL: http://localhost:3000");
+});
+
 sequelize.authenticate()
     .then(() => 
     {
@@ -24,8 +31,12 @@ sequelize.authenticate()
         console.log("Falha na conexão com o banco de dados");
     });
 
-app.listen(3000, () =>
-{
-    console.log("Servidor rodando na URL: http://localhost:3000");
-});
+// Rotas
+
+const cadastroRouter = require("./routes/cadastro");
+
+
+app.use('/cadastro', cadastroRouter);
+
+
 
