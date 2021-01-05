@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const handlebars = require('express-handlebars');
-const cadastroController = require('./controllers/cadastroController');
 
 // Config
 //// Template engine
@@ -32,11 +31,10 @@ sequelize.authenticate()
     });
 
 // Rotas
-
 const cadastroRouter = require("./routes/cadastro");
-
-
 app.use('/cadastro', cadastroRouter);
 
+const addRouter = require('./routes/add');
+app.use('/add', addRouter);
 
 

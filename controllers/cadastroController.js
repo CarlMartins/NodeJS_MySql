@@ -1,4 +1,4 @@
 exports.Cadastro = (req, res) =>
 {
-    res.send("Cadastro de posts");
+    res.render("formulario")
 };
