@@ -26,4 +26,6 @@ app.use('/cadastro', cadastroRouter);
 const addRouter = require('./routes/add');
 app.use('/add', addRouter);
 
+const homeRouter = require('./routes/home');
+app.use('/', homeRouter);
 

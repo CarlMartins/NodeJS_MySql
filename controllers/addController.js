@@ -1,4 +1,15 @@
+const Post = require('../models/Posts');
+
 exports.Add = (req, res) =>
 {
-    res.send(`Texto: ${req.body.titulo} - Conteudo: ${req.body.conteudo}`);
+    Post.create({
+        titulo: req.body.titulo,
+        conteudo: req.body.conteudo
+    }).then(() =>
+    {
+        res.redirect('/');
+    }).catch((erro) =>
+    {
+        res.send("Falha ao criar o post");
+    });
 }
