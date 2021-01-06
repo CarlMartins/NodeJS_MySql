@@ -18,3 +18,28 @@ exports.Add = (req, res) =>
         res.send("Falha ao criar o post");
     });
 };
+
+exports.MostrarPosts = (req, res) =>
+{
+    Post.findAll({ order: [['id', 'DESC']] }).then((posts) =>
+    {
+        res.render('mostrarPosts', {
+            posts: posts
+        });
+    })
+}
+
+exports.DeletarPost = (req, res) =>
+{
+    Post.destroy({
+        where: {
+            'id': req.params.id
+        }
+    }).then(() =>
+    {
+        res.redirect('/cadastro/posts');
+    }).catch((erro) =>
+    {
+        res.send(`Essa postagem não existe. Erro: ${erro}`)
+    })
+}

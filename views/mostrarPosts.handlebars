@@ -1,0 +1,8 @@
+<h1>Lista de posts</h1>
+
+{{#each posts}}
+<h2>{{dataValues.titulo}}</h2>
+<p>{{dataValues.conteudo}}</p>
+<a href="/cadastro/deletar/{{dataValues.id}}"><button>DELETAR POST</button></a>
+<hr>
+{{/each}}
