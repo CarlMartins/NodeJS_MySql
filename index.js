@@ -23,9 +23,6 @@ app.listen(3000, () =>
 const cadastroRouter = require("./routes/cadastro");
 app.use('/cadastro', cadastroRouter);
 
-const addRouter = require('./routes/add');
-app.use('/add', addRouter);
-
 const homeRouter = require('./routes/home');
 app.use('/', homeRouter);
 
